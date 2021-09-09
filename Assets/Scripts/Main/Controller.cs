@@ -6,14 +6,10 @@ public class Controller : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow)) {
-            gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 7.5f);
-        } else if (Input.GetKey(KeyCode.RightArrow)) {
-            gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, -7.5f);
+        if (Input.GetKey(KeyCode.LeftArrow) && transform.position.z < 4.4f) {
+            transform.position += transform.forward * 10f * Time.deltaTime;
+        } else if (Input.GetKey(KeyCode.RightArrow) && transform.position.z > -4.4f) {
+            transform.position -= transform.forward * 10f * Time.deltaTime;
         }
-        else {
-            gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        }
-        
     }
 }

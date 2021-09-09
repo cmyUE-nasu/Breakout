@@ -15,6 +15,7 @@ public class Debuger : MonoBehaviour {
     {
         if (highSpeedBall) {
             ball.GetComponent<Rigidbody>().AddForce(transform.forward * 1500);
+            ball.GetComponent<StartShot>().speed = 37.0f;
         }
     }
 
