@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/*
+ * アタッチされたオブジェクトに何かが衝突すると失敗としてゲームを終了する。
+ */
 public class KabeOut : MonoBehaviour
 {
     private void OnCollisionEnter(Collision other) {

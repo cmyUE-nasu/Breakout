@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * ゲームの結果を記録したシングルトンオブジェクトから
+ * データを読み取り、UIに表示させるスクリプト
+ */
 public class TextDataFetcher : MonoBehaviour {
-    public Text resultMessageText;
-    public Text resultTitleText;
+    [SerializeField] private Text resultMessageText;
+    [SerializeField] private Text resultTitleText;
     
-    // Start is called before the first frame update
     void Start() {
         resultMessageText.text = DataSender.resultMessage;
         if (DataSender.result) {
@@ -16,11 +19,5 @@ public class TextDataFetcher : MonoBehaviour {
         else {
             resultTitleText.text = "Game Over...";
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -3,18 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* デバッグ用のスクリプト
+ * ゲームを自動でクリアできる
+ */
 public class Debuger : MonoBehaviour {
-    public Boolean autoIntercept = false;
-    public Boolean highSpeedBall = false;
+    [SerializeField] private Boolean autoIntercept = false; //自動でボールを跳ね返すか
+    [SerializeField] private Boolean highSpeedBall = false; //ボールを速くするか
 
-    public GameObject player;
-    public GameObject ball;
+    [SerializeField] private GameObject player; //Playerオブジェクトをセット
+    [SerializeField] private GameObject ball;   //Ballオブジェクトをセット
     
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
+        // ボールの加速処理
         if (highSpeedBall) {
-            ball.GetComponent<Rigidbody>().AddForce(transform.forward * 1500);
             ball.GetComponent<StartShot>().speed = 37.0f;
         }
     }

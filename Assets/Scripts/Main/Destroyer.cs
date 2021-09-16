@@ -4,23 +4,21 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
+/*
+ * 的のオブジェクトにアタッチするスクリプト
+ * 何かに衝突したときにアタッチされているGameObjectを破壊し、
+ * GameMaster内の的の数を記録するメンバから１を引く
+ */
 public class Destroyer : MonoBehaviour {
-    public GameObject masterObj;
+     private GameObject _masterObj; //ゲームの進行状況を管理するオブジェクト
+     public GameObject masterObj {
+         set { _masterObj = value; }
+     }
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnCollisionEnter(Collision other) {
-        masterObj.GetComponent<GameMaster>().boxNum--;
+        //GameMasterに的が一つ減ったのを通知する
+        _masterObj.GetComponent<GameMaster>().OnBoxDestroy();
+        //自身を破壊
         Destroy(gameObject);
     }
 }
